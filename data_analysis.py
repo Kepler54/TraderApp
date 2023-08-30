@@ -66,7 +66,7 @@ class DataAnalysis(DataBase):
         current_price_minus_percent = float(current_price - (current_price / 100 * percent))
 
         return (
-            f"Сумма входа в {self.get_coin_name(self.coin_second)}: {amount:.8f}\n"
+            f"Сумма входа в {self.get_coin_name(self.coin_first)}: {amount:.8f}\n"
             f"Комиссия составляет: {percent}%\n"
             f"Начальный результат в {self.get_coin_name(self.coin_second)}: {start_price_minus_percent:.8f}\n"
             f"Актуальный результат в {self.get_coin_name(self.coin_second)}: {current_price_minus_percent:.8f}\n"
