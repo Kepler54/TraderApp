@@ -4,7 +4,6 @@ from datetime import datetime
 
 class Configuration:
     def __init__(self):
-        super().__init__()
         self.date = f'{datetime.now():%d}.{datetime.now():%m}.{datetime.now():%Y}'
         self.time = f'{datetime.now():%H}:{datetime.now():%M}'
         self.coin_first = 0
