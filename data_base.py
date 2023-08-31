@@ -1,6 +1,5 @@
 import sqlite3
 from ast import literal_eval
-from datetime import datetime
 from trade_info import TradeInfo
 
 
@@ -10,11 +9,6 @@ class DataBase(TradeInfo):
         The function creates a database
         :return: None
         """
-        date = f'{datetime.now():%d}.{datetime.now():%m}.{datetime.now():%Y}'
-        time = f'{datetime.now():%H}:{datetime.now():%M}'
-        buy = literal_eval(self.get_ticker())[self.coin_pair()]["buy"]
-        sell = literal_eval(self.get_ticker())[self.coin_pair()]["sell"]
-
         with sqlite3.connect(f"{self.coin_pair()}_trades.db") as db:
             cur = db.cursor()
             cur.execute(
@@ -29,13 +23,15 @@ class DataBase(TradeInfo):
             cur.execute(
                 "INSERT INTO trades VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)",
                 (
-                    date, time, self.coin_pair(), buy, sell,
+                    self.date, self.time, self.coin_pair(),
+                    literal_eval(self.get_ticker())[self.coin_pair()]["buy"],
+                    literal_eval(self.get_ticker())[self.coin_pair()]["sell"],
                     self.entry_value("Введите сумму входа на рынок: "),
                     self.entry_value("Введите процент: ")
                 )
             )
 
-    def get_values_list(self, select) -> list:
+    def get_value_list(self, select) -> list:
         """
         The function accepts a query to the database and returns a list of data
         :param select: str
@@ -54,7 +50,7 @@ class DataBase(TradeInfo):
         """
         try:
             try:
-                if self.get_values_list(
+                if self.get_value_list(
                         "SELECT date, time, coin_pair, buy, sell, amount, percent FROM trades"
                 )[0][0]:
                     pass

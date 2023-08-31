@@ -44,7 +44,7 @@ class TradeInfo(Configuration):
             coin_amount = i[1]
             total_bids_amount += price * coin_amount
 
-        return f"Total bids: {total_bids_amount} $"  # общая сумма выставленных на закуп последних 150 ордеров
+        return f"Total bids: {total_bids_amount} $"  # total amount of the last 150 orders placed for purchase
 
     @staticmethod
     def get_trades(coin_one="eth", coin_two="usd", limit=150) -> str:
@@ -60,8 +60,8 @@ class TradeInfo(Configuration):
             url=f"https://yobit.net/api/3/trades/{coin_one}_{coin_two}?limit={limit}&ignore_invalid=1"
         )
 
-        total_trade_ask = 0  # общая сумма продажи
-        total_trade_bid = 0  # общая сумма покупки
+        total_trade_ask = 0  # total sale amount
+        total_trade_bid = 0  # total purchase amount
 
         for i in response.json()[f"{coin_one}_{coin_two}"]:
             if i["type"] == "ask":

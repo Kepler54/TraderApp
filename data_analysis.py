@@ -2,16 +2,13 @@ from data_base import DataBase
 
 
 class DataAnalysis(DataBase):
-    buy, sell = 0, 1
-    coin_first, coin_second = 0, 1
-
     def coin_trade_info(self, buy_or_sell) -> list:
         """
         The function divides currency pairs accepted as a tuple into separate buy and sell lists
         :param buy_or_sell: int
         :return: str
         """
-        values_list = self.get_values_list("SELECT buy, sell FROM trades")
+        values_list = self.get_value_list("SELECT buy, sell FROM trades")
         value_list = []
         for value in values_list:
             value_list.append(float(value[buy_or_sell]))
@@ -56,8 +53,8 @@ class DataAnalysis(DataBase):
         The function takes the initial number of coins and returns the result at the current exchange rate
         :return: str
         """
-        amount = float(self.get_values_list("SELECT amount FROM trades")[0][0])
-        percent = float(self.get_values_list("SELECT percent FROM trades")[0][0])
+        amount = float(self.get_value_list("SELECT amount FROM trades")[0][0])
+        percent = float(self.get_value_list("SELECT percent FROM trades")[0][0])
 
         start_price = amount * self.coin_trade_info(self.buy)[0]
         start_price_minus_percent = float(start_price - (start_price / 100 * percent))
