@@ -3,13 +3,12 @@ from datetime import datetime
 
 
 class Configuration:
-    def __init__(self):
-        self.date = f'{datetime.now():%d}.{datetime.now():%m}.{datetime.now():%Y}'
-        self.time = f'{datetime.now():%H}:{datetime.now():%M}'
-        self.coin_first = 0
-        self.coin_second = 1
-        self.buy = 0
-        self.sell = 1
+    date = f'{datetime.now():%d}.{datetime.now():%m}.{datetime.now():%Y}'
+    time = f'{datetime.now():%H}:{datetime.now():%M}'
+    coin_first = 0
+    coin_second = 1
+    buy = 0
+    sell = 1
 
     @staticmethod
     def make_coin_pair_file() -> None:

@@ -11,7 +11,7 @@ key = getenv("API_KEY")
 secret = getenv("API_SECRET")
 
 
-def get_info():
+def get_yobit_info():
     values = dict()
     values["method"] = "getInfo"
     values["nonce"] = str(int(time()))
@@ -40,6 +40,6 @@ def get_deposit_address(coin_name="btc"):
 
     return response.json()
 
-# get_info()
+# get_yobit_info()
 # coin = input("Enter a coin name: ")
 # print(f'Address: {get_deposit_address(coin_name=coin)}')

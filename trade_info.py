@@ -4,7 +4,7 @@ from configuration import Configuration
 
 class TradeInfo(Configuration):
     @staticmethod
-    def get_info() -> dict:
+    def get_trade_info() -> dict:
         """
         Information about all current pairs
         :return: dict

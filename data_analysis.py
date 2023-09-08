@@ -90,6 +90,6 @@ class DataAnalysis(DataBase):
             f"Начальный результат в {self.get_coin_name(self.coin_second)}: {start_price_minus_percent:.8f}\n"
             f"Актуальный результат в {self.get_coin_name(self.coin_second)}: {current_price_minus_percent:.8f}\n"
             f"Изменение суммы: {current_price_minus_percent - start_price_minus_percent:.8f}{self.buy_sell_verify()}\n"
-            f"(Покупка) {self.get_exchange_info(self.coin_trade_info(self.buy)[-1], self.buy)}\n"
-            f"(Продажа) {self.get_exchange_info(self.coin_trade_info(self.sell)[-1], self.sell)}\n"
+            f"(Продажа) {self.get_exchange_info(self.coin_trade_info(self.buy)[-1], self.buy)}\n"
+            f"(Покупка) {self.get_exchange_info(self.coin_trade_info(self.sell)[-1], self.sell)}\n"
         )
