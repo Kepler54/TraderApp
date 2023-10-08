@@ -28,8 +28,6 @@ def main() -> None:
     except KeyboardInterrupt:
         print("Вы ничего не ответили!")
 
-    return None
-
 
 if __name__ == '__main__':
     main()

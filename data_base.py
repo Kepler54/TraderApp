@@ -20,7 +20,8 @@ class DataBase(TradeInfo):
                 CREATE TABLE IF NOT EXISTS trades
                 (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                date TEXT, time TEXT, coin_pair TEXT, buy TEXT, sell TEXT, amount TEXT, percent TEXT, notification TEXT
+                date TEXT, time TEXT, coin_pair TEXT, buy TEXT, sell TEXT, 
+                amount TEXT, percent TEXT, notification TEXT
                 )
                 """
             )
@@ -34,7 +35,6 @@ class DataBase(TradeInfo):
                     self.entry_value("Введите границу изменения стоимости в процентах: ")
                 )
             )
-        return None
 
     @staticmethod
     def get_value_list(select) -> list:
@@ -57,7 +57,8 @@ class DataBase(TradeInfo):
         try:
             try:
                 if self.get_value_list(
-                        "SELECT date, time, coin_pair, buy, sell, amount, percent, notification FROM trades"
+                        "SELECT date, time, coin_pair, buy, sell, "
+                        "amount, percent, notification FROM trades"
                 )[0][0]:
                     pass
             except IndexError:
