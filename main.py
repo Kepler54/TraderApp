@@ -1,11 +1,7 @@
 from os import remove
-# from interface import Interface
 from data_analysis import DataAnalysis
 
 trade = DataAnalysis()
-
-
-# app = Interface(trade.get_full_info())
 
 
 def main() -> None:
@@ -14,7 +10,6 @@ def main() -> None:
         trade.verify_coin_pair_file()
         trade.add_db_value()
         print(trade.get_full_info())
-        # app.mainloop()
     except ValueError:
         print("В базе данных осутствуют необходимые значения!")
     except SyntaxError:
