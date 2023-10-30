@@ -20,6 +20,8 @@ class Configuration:
         if type(instance) != float:
             raise TypeError
 
+    __slots__ = ('_buy', '_sell', '_coin_first', '_coin_second', '_percent')
+
     def __init__(self, buy=0, sell=1, coin_first=0, coin_second=1, percent=0.2):
         self._buy = buy
         self._sell = sell
